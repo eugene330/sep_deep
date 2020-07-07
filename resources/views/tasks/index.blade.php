@@ -34,7 +34,7 @@
                                 </td>
 
                                 <td>
-                                    <form action="{{ route('tasks.destroy') }}" method="POST">
+                                    <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
                                         {{ method_field('DELETE')}}
                                         {{ csrf_field() }}
                                         <button class="btn btn-danger">
