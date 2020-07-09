@@ -81,11 +81,9 @@ class TaskController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $tasks)
+    public function edit(Task $task)
     {
-        $this->authorize('edit', $tasks);
-
-
+        return view('tasks.edit',['task'=>$task]);
     }
 
     /**
@@ -95,9 +93,20 @@ class TaskController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Task $task, Request $request, $id)
     {
-        //
+            $this->validate($request, [
+                'name' => 'required|max:255',
+            ]);
+            if ($this->validate->fails()) {
+                return redirect(route('tasks.edit',$task->id))
+                    ->withInput()
+                    ->withErrors($this->validate);
+            }
+
+            $task -> name = $request->name;
+            $task->save();
+            return redirect(route('tasks.index'));
     }
 
     /**
