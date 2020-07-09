@@ -41,8 +41,8 @@
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
-                                    <form action="{{ route('tasks.update', $task->id) }}" method="POST">
-                                        {{ method_field('PUT')}}
+                                    <form action="{{ route('tasks.edit', $task->id) }}" method="POST">
+                                        {{ method_field('GET')}}
                                         {{ csrf_field() }}
                                         <button class="btn btn-warning">
                                             <i class="fa fa-edit"></i>

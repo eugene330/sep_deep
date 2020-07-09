@@ -15,7 +15,6 @@
         <!-- Имя задачи -->
             <div class="form-group">
                 <label for="task" class="col-sm-3 control-label">Изменить задачу</label>
-
                 <div class="col-sm-6">
                     <input type="text" name="name" id="task-name" class="form-control" value="{{ $task->name }}">
                 </div>
